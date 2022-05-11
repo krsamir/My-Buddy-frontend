@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import { successToast, errorToast } from "../../Redux/Actions/ToastActions";
+import { connect } from "react-redux";
 import Axios from "axios";
 
 function GitHubValidation(props) {
@@ -9,21 +11,24 @@ function GitHubValidation(props) {
     const code = new URLSearchParams(search).get("code");
     const params = new URLSearchParams();
     params.append("code", code);
-    Axios.get(
-      "/auth/github/accesstoken",
-      { params },
-      { withCredentials: true }
-    ).then((res) => {
-      if (res.data.status === 1) {
-        setTimeout(() => {
-          props.history.push("/");
-        }, 500);
-      } else {
-        setTimeout(() => {
-          props.history.push("/login");
-        }, 500);
-      }
-    });
+    props.successToast("Please Wait while we Validate you.✋✋", 3000);
+    Axios.get("/auth/github/accesstoken", { params }, { withCredentials: true })
+      .then((res) => {
+        if (res.data.status === 1) {
+          props.successToast("Everything is fine ✔✔.");
+          setTimeout(() => {
+            props.history.push("/");
+          }, 500);
+        } else {
+          props.errorToast("Caught into some issue while validating🙄.");
+          setTimeout(() => {
+            props.history.push("/login");
+          }, 500);
+        }
+      })
+      .catch((e) => {
+        props.errorToast("Caught into some issue while validating🙄.");
+      });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -43,4 +48,4 @@ function GitHubValidation(props) {
   );
 }
 
-export default GitHubValidation;
+export default connect(null, { successToast, errorToast })(GitHubValidation);
