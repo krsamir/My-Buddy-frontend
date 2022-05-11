@@ -1,15 +1,14 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import JiraIcon from './icon.png';
-
-export default function Login() {
-  const [open, setOpen] = React.useState(false);
+import * as React from "react";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import OAuthBitbucket from "./OAuthBitbucket";
+import "./style.css";
+export default function Login(props) {
+  const [open, setOpen] = React.useState(true);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -21,22 +20,34 @@ export default function Login() {
 
   return (
     <React.Fragment>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Sign in
-      </Button>
-      <Dialog
-        open={open}
-        onClose={handleClose}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          height: "100vh",
+        }}
       >
-        <DialogTitle>Sign In</DialogTitle>
+        <Button variant="outlined" onClick={handleClickOpen}>
+          Sign in
+        </Button>
+      </div>
+      <Dialog open={open} onClose={handleClose}>
+        {/* <DialogTitle>Sign In</DialogTitle> */}
         <DialogContent>
-          <DialogContentText>
-            Continue with..&nbsp;&nbsp;&nbsp;
-            <a href="https://github.com/login/oauth/authorize?client_id=7a2611f59f28f55b2e99">
-              <GitHubIcon fontSize="large" color="action"/>
-            </a>
-            &nbsp;&nbsp;
-            <img src={JiraIcon} width={30} height={30} alt="BigCo Inc. logo"/>
+          <DialogContentText component="div">
+            <div
+              className="btn-oauth github"
+              onClick={() =>
+                (window.location =
+                  "https://github.com/login/oauth/authorize?client_id=7a2611f59f28f55b2e99")
+              }
+            >
+              <GitHubIcon fontSize="large" color="action" />
+              <span className="git-text">Login with Github</span>
+            </div>
+            <OAuthBitbucket />
           </DialogContentText>
         </DialogContent>
         <DialogActions>

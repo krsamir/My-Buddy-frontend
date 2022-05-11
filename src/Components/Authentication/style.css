@@ -1,0 +1,26 @@
+/**/
+.btn-oauth{
+    cursor:pointer;
+    padding: 15px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    margin: 40px;
+    font-weight: 700;
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.github{
+    background-color: #24292f;
+}
+.bitbucket{
+    background-color: #0052cc;
+    color: white;
+}
+.git-text{
+    color: white;
+    margin-left: 10px;
+    margin-top: 5px;
+}
