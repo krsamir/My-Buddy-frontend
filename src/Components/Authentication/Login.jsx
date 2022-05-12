@@ -1,6 +1,6 @@
 import * as React from "react";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import OAuthBitbucket from "./OAuthBitbucket";
+import JiraIcon from "./icon.png";
 import "./style.css";
 export default function Login(props) {
   return (
@@ -16,7 +16,15 @@ export default function Login(props) {
           <GitHubIcon fontSize="large" className="git-svg" />
           <span className="git-text">Login with Github</span>
         </button>
-        <OAuthBitbucket />
+        <button
+          className="btn-oauth bitbucket"
+          onClick={() =>
+            (window.location = process.env.REACT_APP_BITBUCKET_URL)
+          }
+        >
+          <img src={JiraIcon} width={30} height={30} alt="Attlassian" />
+          <span style={{ marginLeft: "10px" }}>Login with Bitbucket</span>
+        </button>
       </div>
     </div>
   );
