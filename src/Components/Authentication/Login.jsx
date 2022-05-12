@@ -8,10 +8,7 @@ export default function Login(props) {
       <div className="buttonCenter">
         <button
           className="btn-oauth github"
-          onClick={() =>
-            (window.location =
-              "https://github.com/login/oauth/authorize?client_id=7a2611f59f28f55b2e99")
-          }
+          onClick={() => (window.location = process.env.REACT_APP_GITHUB_URL)}
         >
           <GitHubIcon fontSize="large" className="git-svg" />
           <span className="git-text">Login with Github</span>
