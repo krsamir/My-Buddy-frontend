@@ -6,6 +6,9 @@ const Login = lazy(() => import("./Components/Authentication/Login"));
 const GitHubValidation = lazy(() =>
   import("./Components/Authentication/GitHubValidation")
 );
+const BitBucketValidation = lazy(() =>
+  import("./Components/Authentication/OAuthBitbucket")
+);
 function Routes() {
   return (
     <div>
@@ -15,6 +18,11 @@ function Routes() {
             <ProtectedRoute path="/" component={Home} exact />
             <Route path="/login" component={Login} exact />
             <Route path="/github/validate" component={GitHubValidation} exact />
+            <Route
+              path="/bitbucket/validate"
+              component={BitBucketValidation}
+              exact
+            />
           </Switch>
         </Suspense>
       </Router>
