@@ -13,7 +13,7 @@ export default function Login(props) {
               "https://github.com/login/oauth/authorize?client_id=7a2611f59f28f55b2e99")
           }
         >
-          <GitHubIcon fontSize="large" color="action" className="git-svg" />
+          <GitHubIcon fontSize="large" className="git-svg" />
           <span className="git-text">Login with Github</span>
         </button>
         <OAuthBitbucket />
