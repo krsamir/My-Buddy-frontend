@@ -13,7 +13,7 @@ function OAuthBitbucket(props) {
     props.successToast("Please Wait while we Validate you.✋✋", 3000);
     if (code === undefined || code === null) {
       props.errorToast("Unauthorized Access🙄.");
-      props.history.push("/login");
+      props.history.push("/");
     } else {
       axios
         .post("/auth/bitbucket/accestoken", { code }, { withCredentials: true })
@@ -22,12 +22,12 @@ function OAuthBitbucket(props) {
           if (res.data.status === 1) {
             props.successToast("Authorized ✔✔.");
             setTimeout(() => {
-              props.history.push("/");
+              props.history.push("/dashboard");
             }, 500);
           } else {
             props.errorToast("Caught into some issue while validating🙄.");
             setTimeout(() => {
-              props.history.push("/login");
+              props.history.push("/");
             }, 500);
           }
         })
@@ -35,7 +35,7 @@ function OAuthBitbucket(props) {
           console.log(e);
           props.errorToast("Caught into some issue while validating🙄.");
           setTimeout(() => {
-            props.history.push("/login");
+            props.history.push("/");
           }, 500);
         });
     }

@@ -1,0 +1,78 @@
+.main {
+  background-color: #dacfcf !important;
+}
+.home {
+  height: 100vh;
+  width: 65vw;
+  overflow: hidden;
+  float: left;
+  background-image: url(Home.png);
+  background-size: cover;
+  background-position: center center;
+}
+.login-register-wrapper {
+  height: 100vh;
+  width: 35vw;
+  float: right;
+  padding: 0 2em;
+  border-radius: 20px 0px 0px 20px;
+  box-shadow: 0px 2px 7px #bd5757;
+  overflow: hidden;
+  color: #ffffff;
+  background-color: white;
+}
+
+/* Nav buttons */
+.nav-buttons {
+  width: 100%;
+  height: 100px;
+  padding-top: 40px;
+  opacity: 1;
+  margin-bottom: 3em;
+}
+button {
+  font-size: 1.5em;
+  margin-right: 1em;
+  border: 0px;
+  cursor: pointer;
+}
+button:focus {
+  outline: 0px;
+}
+button.active {
+  padding-bottom: 10px;
+  border-bottom: solid 2px #1059ff;
+}
+
+.form-group label {
+  text-transform: uppercase;
+}
+
+/*Form positioning and animation */
+
+form#registerform {
+  left: 500px;
+  top: -230px;
+  position: relative;
+}
+
+form {
+  position: relative;
+  transition: all 0.1s ease;
+}
+#loginBtn,
+#registerBtn {
+  transition: all 0.5s ease;
+  color: #bd5757;
+  background-color: white;
+}
+
+.form-commons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.text-field-margin {
+  margin-bottom: 20px !important;
+}

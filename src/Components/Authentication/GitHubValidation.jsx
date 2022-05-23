@@ -27,12 +27,12 @@ function GitHubValidation(props) {
           if (res.data.status === 1) {
             props.successToast("Everything is fine ✔✔.");
             setTimeout(() => {
-              props.history.push("/");
+              props.history.push("/dashboard");
             }, 500);
           } else {
             props.errorToast("Caught into some issue while validating🙄.");
             setTimeout(() => {
-              props.history.push("/login");
+              props.history.push("/");
             }, 500);
           }
         })
